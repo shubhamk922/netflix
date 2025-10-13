@@ -5,6 +5,9 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
 
 	"example.com/netflix/internal/infrastructure/http/middleware"
 	"example.com/netflix/internal/infrastructure/logger"
@@ -35,16 +38,26 @@ func (s *GracefulServer) Prestart() error {
 	return nil
 }
 
-func (s *GracefulServer) Start() error {
+func (s *GracefulServer) Start() (chan bool, error) {
 	listener, err := net.Listen("tcp", s.Server.Addr)
 
 	if err != nil {
-		return err
+		return nil, err
 	}
 	s.Listener = listener
 	go s.Server.Serve(s.Listener)
 	// log
-	return nil
+	// so as to avoid shutdown the main function
+	done := make(chan bool, 1)
+	interrupt := make(chan os.Signal, 1)
+	signal.Notify(interrupt, syscall.SIGINT, syscall.SIGTERM)
+	// Now Lets write a graceful shutdown function
+	go func() {
+		<-interrupt
+		s.Shutdown()
+		done <- true
+	}()
+	return done, nil
 }
 
 func (s *GracefulServer) Shutdown() error {
