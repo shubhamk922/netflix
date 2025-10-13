@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"net/http"
 
-	"example.com/netflix/internal/adapter/in/controller"
-	"example.com/netflix/internal/adapter/out/persistence"
-	"example.com/netflix/internal/application/service"
-	"example.com/netflix/internal/domain"
 	"example.com/netflix/internal/infrastructure/logger"
+	"example.com/netflix/internal/recommendation/adapter/in/controller"
+	"example.com/netflix/internal/recommendation/adapter/out/persistence"
+	"example.com/netflix/internal/recommendation/application/service"
+	"example.com/netflix/internal/recommendation/domain"
 )
 
 func main() {

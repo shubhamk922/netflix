@@ -1,8 +1,10 @@
 package service
 
 import (
-	"example.com/netflix/internal/application/port/out"
-	"example.com/netflix/internal/domain"
+	"context"
+
+	"example.com/netflix/internal/recommendation/application/port/out"
+	"example.com/netflix/internal/recommendation/domain"
 )
 
 type RecommendationService struct {
@@ -19,6 +21,6 @@ func NewRecommendationService(engine domain.TitleSimilarityEngine, repo out.Reco
 	}
 }
 
-func (r *RecommendationService) Recommend() ([]domain.Movie, error) {
+func (r *RecommendationService) Recommend(ctx context.Context) ([]domain.Movie, error) {
 	return []domain.Movie{}, nil
 }

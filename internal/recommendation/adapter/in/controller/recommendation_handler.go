@@ -1,9 +1,10 @@
 package controller
 
 import (
+	"context"
 	"net/http"
 
-	"example.com/netflix/internal/application/port/in"
+	"example.com/netflix/internal/recommendation/application/port/in"
 )
 
 type RecommendationController struct {
@@ -18,5 +19,6 @@ func NewRecommendationController(usecase in.RecommendationPort) *RecommendationC
 }
 
 func (c *RecommendationController) GetAllSimilarMovies(w http.ResponseWriter, r *http.Request) {
+	_ = context.Background()
 	return
 }
