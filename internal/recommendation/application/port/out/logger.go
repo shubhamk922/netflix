@@ -1,8 +1,8 @@
 package out
 
 type Logger interface {
-	Info(msg string, args ...any)
-	Error(msg string, args ...any)
-	Debug(msg string, args ...any)
-	Warn(msg string, args ...any)
+	Infof(msg string, args ...any)
+	Errorf(msg string, args ...any)
+	Debugf(msg string, args ...any)
+	Warnf(msg string, args ...any)
 }
