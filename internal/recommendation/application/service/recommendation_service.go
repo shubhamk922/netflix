@@ -21,6 +21,6 @@ func NewRecommendationService(engine domain.TitleSimilarityEngine, repo out.Reco
 	}
 }
 
-func (r *RecommendationService) Recommend(ctx context.Context) ([]domain.Movie, error) {
+func (r *RecommendationService) Recommend(ctx context.Context, title string) ([]domain.Movie, error) {
 	return []domain.Movie{}, nil
 }

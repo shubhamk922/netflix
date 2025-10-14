@@ -7,5 +7,5 @@ import (
 )
 
 type RecommendationPort interface {
-	Recommend(ctx context.Context) ([]domain.Movie, error)
+	Recommend(ctx context.Context, title string) ([]domain.Movie, error)
 }
