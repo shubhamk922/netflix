@@ -7,7 +7,7 @@ import (
 )
 
 type RecommendationRepositoty interface {
-	GetAllMoviesByFrqId(ctx context.Context) ([]domain.Movie, error)
+	GetAllMoviesByFrqId(ctx context.Context, freqId string) ([]domain.Movie, error)
 
 	GetAllMovies(ctx context.Context) ([]domain.Movie, error)
 }

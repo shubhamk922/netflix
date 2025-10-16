@@ -14,7 +14,7 @@ import (
 
 func main() {
 
-	domain_service := domain.NewTitleSimilarityEngine()
+	domain_service := domain.NewTitleSimilarityEngine(3)
 	repo := persistence.NewRecommednationAdapter()
 	logger := logger.NewLogger()
 	usercase := service.NewRecommendationService(domain_service, repo, logger)
