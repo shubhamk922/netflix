@@ -47,5 +47,7 @@ func (r *RecommendationService) Recommend(ctx context.Context, title string) ([]
 
 	}
 
+	r.log.Infof("Getting recommended movies for title %s", title)
+
 	return movies, nil
 }
